@@ -12,15 +12,24 @@ RUN npm install -g yarn
 RUN which yarn
 
 RUN mkdir /usr/src/app/site
-
 WORKDIR /usr/src/app/site
+
 COPY ./site/package.json /usr/src/app/site/package.json
+RUN yarn install
+
+RUN mkdir /usr/src/app/alpha
+WORKDIR /usr/src/app/alpha
+
+COPY ./alpha/package.json /usr/src/app/alpha/package.json
 RUN yarn install
 
 COPY . /usr/src/app
 
 WORKDIR /usr/src/app/site
 RUN gatsby build
+
+WORKDIR /usr/src/app/alpha
+RUN yarn build
 
 FROM nginx:1.13.9-alpine
 
