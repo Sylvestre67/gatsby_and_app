@@ -7,12 +7,15 @@ WORKDIR /usr/src/app
 
 RUN npm install react-scripts -g --silent
 RUN npm install --global gatsby-cli
+RUN npm install -g yarn
+
+RUN which yarn
 
 RUN mkdir /usr/src/app/site
 
 WORKDIR /usr/src/app/site
 COPY ./site/package.json /usr/src/app/site/package.json
-RUN npm install
+RUN yarn install
 
 COPY . /usr/src/app
 
