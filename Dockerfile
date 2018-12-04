@@ -1,4 +1,4 @@
-FROM node:9.6.1 as builder
+FROM node:9.10.0 as builder
 
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
