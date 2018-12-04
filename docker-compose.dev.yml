@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
     sample-app:
-        container_name: sample-app
+        container_name: gatsby_app
         build:
             context: .
             dockerfile: Dockerfile
@@ -10,6 +10,8 @@ services:
             - '.:/usr/src/app'
             - '/usr/src/app/node_modules'
             - './site/node_modules:/usr/src/app/site/node_modules'
+            - './alpha/node_modules:/usr/src/app/alpha/node_modules'
+            - './beta/node_modules:/usr/src/app/beta/node_modules'
         ports:
             - '3000:3000'
         environment:
